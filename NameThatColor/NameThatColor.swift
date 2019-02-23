@@ -23,7 +23,7 @@ import UIKit
 
 public extension UIColor {
 
-    public var name: String {
+    public var descriptiveName: String {
         var r: CGFloat = 0
         var g: CGFloat = 0
         var b: CGFloat = 0
@@ -35,9 +35,10 @@ public extension UIColor {
         b = b * 255
 
         var shortestDistance = CGFloat.greatestFiniteMagnitude
-        var bestMatchingName = Resource.colorMap.first!.value
+        var bestMatchingName = Resource.hexToName.first!.value
 
-        for (hex, name) in Resource.colorMap {
+
+        for (hex, name) in Resource.hexToName {
             let mask = 0x000000FF
             let r2 = CGFloat(Int(hex >> 16) & mask)
             let g2 = CGFloat(Int(hex >> 8) & mask)
@@ -55,4 +56,62 @@ public extension UIColor {
         return bestMatchingName
     }
 
+    public static let allDescriptiveNames: [String] = {
+        return Resource.names
+    }()
+
+    public static func hexStringFor(name: String) -> String {
+        guard let hex = Resource.nameToHex[name] else { return "nil" }
+        return String(format:"%07X", hex)
+    }
+
+    public static func colorFor(name: String) -> UIColor? {
+        guard let hex = Resource.nameToHex[name] else { return nil }
+        return UIColor(hexNumber: hex)
+    }
+
+    private static var _sectionTitles: [Character]! = nil
+    public static var sectionsTitles: [Character] = {
+        _  = generate
+        return _sectionTitles!
+    }()
+
+    private static var _sections: [Character: [String]]! = nil
+    public static var sections: [Character: [String]] = {
+        _  = generate
+        return _sections
+    }()
+
+    private static let generate = {
+        let sorted = Resource.names.sorted()
+        _sections = [Character: [String]]()
+        var dTemp = [Character: [String]]()
+
+        sorted.forEach { name in
+            guard let firstCharacter = name.first else { return }
+            if dTemp[firstCharacter] == nil {
+                dTemp[firstCharacter] = [String]()
+            }
+            dTemp[firstCharacter]!.append(name)
+        }
+
+        dTemp.forEach({ (arg: (key: Character, value: [String])) in
+            let (key, value) = arg
+            _sections[key] = value.sorted()
+        })
+
+        _sectionTitles = Array(_sections.keys).sorted()
+    }()
+
+}
+
+extension UIColor {
+    public convenience init?(hexNumber: Int) {
+        let r, g, b: CGFloat
+        r = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
+        g = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
+        b = CGFloat(hexNumber & 0x000000ff) / 255
+        self.init(red: r, green: g, blue: b, alpha: 1.0)
+        return
+    }
 }

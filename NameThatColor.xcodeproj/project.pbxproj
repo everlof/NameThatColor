@@ -14,6 +14,7 @@
 		C445EEE5216E885A00851939 /* NameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C445EEE4216E885A00851939 /* NameList.swift */; };
 		C445EEE7216F43CA00851939 /* TestWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C445EEE6216F43CA00851939 /* TestWebView.swift */; };
 		C445EEE9216F44A400851939 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C445EEE8216F44A400851939 /* UIColor+Extension.swift */; };
+		C4918493221AF3AE00839454 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C4918492221AF3AE00839454 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		C445EEE4216E885A00851939 /* NameList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameList.swift; sourceTree = "<group>"; };
 		C445EEE6216F43CA00851939 /* TestWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWebView.swift; sourceTree = "<group>"; };
 		C445EEE8216F44A400851939 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		C4918492221AF3AE00839454 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		C445EEBD216E86B800851939 = {
 			isa = PBXGroup;
 			children = (
+				C4918492221AF3AE00839454 /* README.md */,
 				C445EEC9216E86B800851939 /* NameThatColor */,
 				C445EED4216E86B800851939 /* NameThatColorTests */,
 				C445EEC8216E86B800851939 /* Products */,
@@ -192,6 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4918493221AF3AE00839454 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

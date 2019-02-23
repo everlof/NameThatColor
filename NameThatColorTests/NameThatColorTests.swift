@@ -26,7 +26,7 @@ import XCTest
 class NameThatColorTests: XCTestCase {
 
     func testSimple() {
-        XCTAssertEqual(UIColor.red.name, "Red")
+        XCTAssertEqual(UIColor.red.descriptiveName, "Red")
     }
 
     func testAllAgainstLiveWebsite() {
@@ -35,7 +35,7 @@ class NameThatColorTests: XCTestCase {
         let e = expectation(description: "Await fetching chir.ag website")
         let request = URLRequest(url: URL(string: "http://chir.ag/projects/name-that-color/")!)
         _ = webView.load(request) {
-            for hexColor in Resource.colorMap.keys {
+            for hexColor in Resource.hexToName.keys {
                 let mask = 0x000000FF
                 let r = CGFloat(Int(hexColor >> 16) & mask)
                 let g = CGFloat(Int(hexColor >> 8) & mask)
@@ -45,7 +45,7 @@ class NameThatColorTests: XCTestCase {
 
                 webView.evaluateJavaScript("ntc.name('\(color.hex)')", completionHandler: { (result, error) in
                     if let arrayResult = result as? [Any], let colorName = arrayResult[1] as? String {
-                        XCTAssertEqual(color.name, colorName)
+                        XCTAssertEqual(color.descriptiveName, colorName)
                     } else {
                         XCTFail("Didn't get result from website.")
                     }
@@ -84,7 +84,13 @@ class NameThatColorTests: XCTestCase {
         // L=91.53 a=2.90 b=20.74
         //
         // And according to ΔE, "Almond" is more similar to "#f9d4c3" than "Givry".
-        XCTAssertEqual(UIColor(hexString: "#f9d4c3")!.name, "Almond")
+        XCTAssertEqual(UIColor(hexString: "#f9d4c3")!.descriptiveName, "Almond")
+    }
+
+    func testColorForName() {
+        print(UIColor.colorFor(name: "Yellow"))
+
+        XCTAssertEqual(UIColor.colorFor(name: "Yellow"), UIColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0))
     }
 
     /* The Javascript library and this library produce different
@@ -126,7 +132,7 @@ class NameThatColorTests: XCTestCase {
     func testPerformanceExample() {
         self.measure {
             for _ in 0...1000 {
-                XCTAssertEqual(UIColor.red.name, "Red")
+                XCTAssertEqual(UIColor.red.descriptiveName, "Red")
             }
         }
     }

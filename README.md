@@ -8,11 +8,11 @@ A library that defines 1500+ names of colors. The naming has been taken from htt
 ```swift
 let myColor = UIColor.red
 
-myColor.name // "Red"
+myColor.descriptiveName // "Red"
 
 let anotherColor = UIColor(red: 0xEE/0xFF, green: 0xD9/0xFF, blue: 0xC4/0xFF, alpha: 1.0)
 
-anotherColor.name //  "Almond"
+anotherColor.descriptiveName //  "Almond"
 ```
 
 ### Installation
