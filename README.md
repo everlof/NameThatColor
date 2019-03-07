@@ -1,3 +1,5 @@
+[![codebeat badge](https://codebeat.co/badges/4f107a88-10fc-49bf-b763-5b45a89f7e8f)](https://codebeat.co/projects/github-com-everlof-namethatcolor-master)
+
 ### Introduction
 
 A library that defines 1500+ names of colors. The naming has been taken from http://chir.ag/projects/ntc/). However, euclidean distance is used instead to find the color closest.
