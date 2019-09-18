@@ -23,7 +23,7 @@ import UIKit
 
 public extension UIColor {
 
-    public var descriptiveName: String {
+    var descriptiveName: String {
         var r: CGFloat = 0
         var g: CGFloat = 0
         var b: CGFloat = 0
@@ -56,33 +56,33 @@ public extension UIColor {
         return bestMatchingName
     }
 
-    public static let allDescriptiveNames: [String] = {
+    static let allDescriptiveNames: [String] = {
         return Resource.names
     }()
 
-    public static func hexStringFor(name: String) -> String {
+    static func hexStringFor(name: String) -> String {
         guard let hex = Resource.nameToHex[name] else { return "nil" }
         return String(format:"%07X", hex)
     }
 
-    public static func colorFor(name: String) -> UIColor? {
+    static func colorFor(name: String) -> UIColor? {
         guard let hex = Resource.nameToHex[name] else { return nil }
         return UIColor(hexNumber: hex)
     }
 
     private static var _sectionTitles: [Character]! = nil
-    public static var sectionsTitles: [Character] = {
+    static var sectionsTitles: [Character] = {
         _  = generate
         return _sectionTitles!
     }()
 
     private static var _sections: [Character: [String]]! = nil
-    public static var sections: [Character: [String]] = {
+    static var sections: [Character: [String]] = {
         _  = generate
         return _sections
     }()
 
-    private static let generate = {
+    static let generate: () = {
         let sorted = Resource.names.sorted()
         _sections = [Character: [String]]()
         var dTemp = [Character: [String]]()

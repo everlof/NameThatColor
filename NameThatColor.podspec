@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NameThatColor'
-  s.version          = '0.2.0'
+  s.version          = '0.2.1'
   s.summary          = 'Names around 1500 colors'
 
 # This description is used to generate tags and improve search results.
@@ -32,7 +32,7 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'NameThatColor/*.swift'
 
-  s.swift_version = '4.2'
+  s.swift_version = '5.0'
 
   # s.resource_bundles = {
   #   'NameThatColorA' => ['NameThatColorA/Assets/*.png']
